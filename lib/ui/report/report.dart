@@ -205,12 +205,20 @@ class _ReportScreenState extends State<ReportScreen> {
                   );
                 }
                 if (state is ReportScreenLoading) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
+                  return const SizedBox(
+                    height: 300,
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
                   );
                 } else {
-                  return const Text(
-                      'لطفا مقادیر مناسب برای جست و جو انتخاب کنید ');
+                  return const SizedBox(
+                    height: 300,
+                    child: Center(
+                      child: Text(
+                          'لطفا مقادیر مناسب برای جست و جو انتخاب کنید '),
+                    ),
+                  );
                 }
               },
             )
