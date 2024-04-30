@@ -175,15 +175,20 @@ class _ReportScreenState extends State<ReportScreen> {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
-                                      Text(data.trip!.totalActualDistance!.ceil()
+                                      Text(data.trip!.totalActualDistance!
+                                          .ceil()
                                           .toString()),
-                                      const Text('  :مجموع فاصله طی شده ' ,),
+                                      const Text(
+                                        '  :مجموع فاصله طی شده ',
+                                      ),
                                     ],
                                   ),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
-                                      Text(data.trip!.totalDuration!.ceil().toString()),
+                                      Text(data.trip!.totalDuration!
+                                          .ceil()
+                                          .toString()),
                                       const SizedBox(
                                         width: 5,
                                       ),
