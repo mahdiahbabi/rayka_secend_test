@@ -36,8 +36,21 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: BlocProvider(
-        create: (context) => ReportBloc(),
-        child: ReportScreen(),
+        create: (context) {
+          final reportBloc = ReportBloc();
+          reportBloc.stream.listen((state) {
+            if (state is ReportScreenEror) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: Text(state.appException.message))));
+            }
+          });
+          return reportBloc;
+        },
+        child: Directionality(
+          textDirection: TextDirection.rtl,
+          child: ReportScreen()),
       ),
     );
   }

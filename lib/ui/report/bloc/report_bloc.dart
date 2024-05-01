@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:meta/meta.dart';
 import 'package:rayka_secend_test/common/exception.dart';
 import 'package:rayka_secend_test/data/model/reportmodel.dart';
@@ -26,8 +27,17 @@ class ReportBloc extends Bloc<ReportEvent, ReportState> {
           emit(ReposrtScreenSuccess(report: tripReport));
         }
       } catch (e) {
-        emit(ReportScreenEror(
-            appException: AppException(message: e.toString())));
+        var connectivityResult = await Connectivity().checkConnectivity();
+
+        if (connectivityResult == ConnectivityResult.none) {
+          emit(ReportScreenEror(
+              appException: AppException(
+                  message:
+                      'لطفا اتصال اینترنت را بررسی کنید و مجدد تلاش کنید ')));
+        } else {
+          emit(ReportScreenEror(
+              appException: AppException(message: e.toString())));
+        }
       }
     });
   }
