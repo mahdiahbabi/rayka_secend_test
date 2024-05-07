@@ -1,12 +1,11 @@
 // ignore_for_file: use_key_in_widget_constructors
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:rayka_secend_test/ui/report/bloc/report_bloc.dart';
 
 class ReportScreen extends StatefulWidget {
-  ReportScreen({Key? key});
+  const ReportScreen({Key? key});
 
   @override
   State<ReportScreen> createState() => _ReportScreenState();
@@ -14,9 +13,7 @@ class ReportScreen extends StatefulWidget {
 
 class _ReportScreenState extends State<ReportScreen> {
   String startTime = '';
-
   String endTime = '';
-
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -56,11 +53,6 @@ class _ReportScreenState extends State<ReportScreen> {
                                   lastDate: DateTime(2100),
                                 ).then((selectedDate) {
                                   if (selectedDate != null) {
-                                    // Do something with the selected date
-                                    var year = selectedDate.year;
-                                    var month = selectedDate.month;
-                                    var day = selectedDate.day;
-
                                     setState(() {
                                       startTime = DateFormat('yyyy-MM-dd')
                                           .format(selectedDate);
@@ -81,7 +73,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                         ? '  تاریخ شروع '
                                         : DateFormat('yyyy,MM,dd')
                                             .format(DateTime.parse(startTime)),
-                                  ), // Closing parenthesis added here
+                                  ),
                                 ),
                               ),
                             ),
@@ -94,10 +86,6 @@ class _ReportScreenState extends State<ReportScreen> {
                                   lastDate: DateTime(2100),
                                 ).then((selectedDate) {
                                   if (selectedDate != null) {
-                                    // Do something with the selected date
-                                    var year = selectedDate.year;
-                                    var month = selectedDate.month;
-                                    var day = selectedDate.day;
                                     setState(() {
                                       endTime = DateFormat('yyyy-MM-dd')
                                           .format(selectedDate);
@@ -112,7 +100,6 @@ class _ReportScreenState extends State<ReportScreen> {
                                 ),
                                 width: screenSize.width / 2 - 15,
                                 height: 50,
-                                // color: Colors.red,
                                 child: Center(
                                   child: Text(
                                     endTime.isEmpty

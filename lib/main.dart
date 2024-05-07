@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
           });
           return reportBloc;
         },
-        child: Directionality(
+        child: const Directionality(
           textDirection: TextDirection.rtl,
           child: ReportScreen()),
       ),

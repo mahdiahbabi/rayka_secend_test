@@ -13,7 +13,6 @@ abstract class IReportDataSource {
 }
 
 class RemotReportDataSource implements IReportDataSource {
-  @override
   final Dio dio;
 
   RemotReportDataSource(this.dio);
